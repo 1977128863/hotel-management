@@ -1,0 +1,388 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(239, 239, 239);
+    height: 100%;
+}
+
+.contai {
+    margin-top: 1%;
+}
+
+.layui-card-header {
+    border-bottom: 1px solid #57515140;
+}
+
+.querytop {
+    margin: 10px 0px 10px 0px;
+    height: 35px;
+}
+
+.comt_body {
+
+    background-color: rgba(128, 128, 128, 0.11);
+}
+
+.comt_content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+}
+
+.machibutton {
+    /* 	height: 30px;
+        line-height: 30px; */
+}
+
+.layui-input {
+    /* 	height: 30px; */
+    /* 	font-size: 12px; */
+}
+
+.layui-form-label {
+    line-height: 20px;
+    width: 80px;
+}
+
+.layui-form-item {
+    margin-bottom: 7px;
+}
+
+.treeDemo {
+    overflow-y: auto;
+    overflow-x: auto;
+    height: 100%;
+}
+
+.layui-layer-content {
+    /*  overflow: visible !important; */
+}
+
+.layui-layer-btn-c {
+
+}
+
+.treeSelect .layui-input {
+    border: 0px;
+}
+
+.layui-input:focus, .layui-textarea:focus {
+    border-color: #1e9fff !important
+}
+
+#mach-hide-condition {
+    display: none;
+    width: 101.5%;
+    height: auto;
+    background-color: white;
+    position: absolute;
+    top: 80px;
+    right: -10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+    z-index: 999999;
+    position: absolute;
+}
+
+.mach-hide-condition {
+    display: none;
+    width: 101.5%;
+    height: auto;
+    background-color: white;
+    position: absolute;
+    top: 80px;
+    right: -10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+    z-index: 999999;
+    position: absolute;
+}
+
+.mach_icon {
+    float: right;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #888;
+}
+
+.labelTitle {
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    margin-left: -5px;
+    width: 90px;
+}
+
+.labelText {
+    border: 1px solid #eee;
+    text-align: center;
+    width: 46%;
+}
+
+.detailitem {
+    margin-left: 25px !important;
+    margin-bottom: 0px !important;
+}
+
+.detailinline {
+    margin-bottom: 0px !important;
+    margin-right: 0px !important;
+}
+
+.layui-footer {
+    width: 93%;
+    position: fixed;
+    bottom: 16px;
+    height: 44px;
+    line-height: 44px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.layui-field-title {
+    color: #1183fb;
+}
+
+.layui-elem-quote {
+    height: 0px;
+    line-height: 0px;
+    background-color: #ffffff;
+}
+
+.querytop {
+    margin: 10px 0px 10px 0px;
+    height: 35px;
+}
+
+.mach_body {
+
+    background-color: rgba(128, 128, 128, 0.11);
+}
+
+.mach-head-query {
+    padding: 0px 10px 0px 10px;
+    border-bottom: 1px solid #8080801c;
+    margin-bottom: 10px;
+}
+
+.mach_content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+
+.layui-form {
+    border-radius: 8px;
+    background-color: white;
+}
+
+.mach_top {
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.label-query {
+    padding: 9px 5px;
+    text-align: center;
+}
+
+.mach-head-query-ex {
+    padding: 10px 10px 0px 10px;
+}
+
+.input-query {
+    width: 160px;
+}
+
+.font-color {
+    color: red;
+}
+
+.addlabel {
+    width: 90px;
+}
+
+.formBody {
+    padding: 0px 20px;
+}
+
+.detailItem {
+    margin-left: 14px;
+}
+
+.elemquote {
+    margin-top: 15px;
+}
+
+.detailimg {
+    width: 200px;
+    height: 150px;
+    border: 1px solid;
+}
+
+.layui-form-select dl {
+    z-index: 9999999;
+}
+
+.layui-elem-field legend {
+    color: black;
+}
+
+.moneySpan {
+    position: absolute;
+    right: 8%;
+    top: 17%;
+}
+
+select[multiple] + .layui-form-select > .layui-select-title > input.layui-input {
+    border-bottom: 0
+}
+
+select[multiple] + .layui-form-select dd {
+    padding: 0;
+}
+
+select[multiple] + .layui-form-select .layui-form-checkbox[lay-skin=primary] {
+    margin: 0 !important;
+    display: block;
+    line-height: 36px !important;
+    position: relative;
+    padding-left: 38px;
+}
+
+select[multiple] + .layui-form-select .layui-form-checkbox[lay-skin=primary] span {
+    line-height: 36px !important;
+    float: none;
+}
+
+select[multiple] + .layui-form-select .layui-form-checkbox[lay-skin=primary] i {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    margin-top: 9px;
+}
+
+.multiSelect {
+    line-height: normal;
+    height: auto;
+    padding: 4px 10px;
+    overflow: hidden;
+    min-height: 38px;
+    margin-top: -38px;
+    left: 0;
+    z-index: 99;
+    position: relative;
+    background: none;
+}
+
+.multiSelect a {
+    padding: 2px 5px;
+    background: #908e8e;
+    border-radius: 2px;
+    color: #fff;
+    display: block;
+    line-height: 20px;
+    height: 20px;
+    margin: 2px 5px 2px 0;
+    float: left;
+}
+
+.multiSelect a span {
+    float: left;
+}
+
+.multiSelect a i {
+    float: left;
+    display: block;
+    margin: 2px 0 0 2px;
+    border-radius: 2px;
+    width: 8px;
+    height: 8px;
+    padding: 4px;
+    position: relative;
+    -webkit-transition: all .3s;
+    transition: all .3s
+}
+
+.multiSelect a i:before, .multiSelect a i:after {
+    position: absolute;
+    left: 8px;
+    top: 2px;
+    content: '';
+    height: 12px;
+    width: 1px;
+    background-color: #fff
+}
+
+.multiSelect a i:before {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.multiSelect a i:after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.multiSelect a i:hover {
+    background-color: #545556;
+}
+
+.multiOption {
+    display: inline-block;
+    padding: 0 5px;
+    cursor: pointer;
+    color: #999;
+}
+
+.multiOption:hover {
+    color: #5FB878
+}
+
+@font-face {
+    font-family: "iconfont";
+    src: url('data:application/x-font-woff;charset=utf-8;base64,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') format('woff')
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fanxuan:before {
+    content: "\e837";
+}
+
+.icon-quanxuan:before {
+    content: "\e623";
+}
+
+.icon-qingkong:before {
+    content: "\e63e";
+}
+
+.detailInline {
+    margin-right: -1px !important;
+    width: 14% !important;
+}
+
+.detailLabel {
+    width: 11% !important;
+}
+
+.treeIcon {
+    float: right;
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+.layui-table-cell .layui-form-checkbox[lay-skin="primary"] {
+    transform: translateY(-80%);
+}

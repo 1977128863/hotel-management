@@ -1,0 +1,23 @@
+/*
+ * @Author: Lancer
+ * @Date:
+ * @Last Modified by:   Lancer
+ * @Last Modified time: 
+ */
+.nav_manage_form .layui-form label {
+    font-weight: 400;
+    padding-right: 0;
+}
+
+.nav_manage_form .layui-form .layui-input-block {
+    margin-left: 105px;
+}
+
+.nav_manage_form .layui-form .url-name,
+.nav_manage_form .layui-form .article-table,
+.nav_manage_form .layui-form .img-article-table,
+.nav_manage_form .layui-form .article-one {
+    display: none;
+}
+
+/*# sourceMappingURL=nav_manage_form.css.map */

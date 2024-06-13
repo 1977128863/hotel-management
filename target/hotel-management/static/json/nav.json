@@ -1,0 +1,116 @@
+{
+  "contentManagement": [
+    {
+      "title": "后台管理",
+      "icon": "&#xe614;",
+      "href": "",
+      "spread": false,
+      "children": [
+        {
+          "title": "管理员用户管理",
+          "icon": "&#xe770;",
+          "href": "html/back/admin_manage/adminList.html",
+          "spread": false
+        },
+        {
+          "title": "角色管理",
+          "icon": "&#xe770;",
+          "href": "html/back/role_manage/roleList.html",
+          "spread": false
+        },
+        {
+          "title": "数据字典管理",
+          "icon": "&#xe770;",
+          "href": "html/back/data_manage/data.html",
+          "spread": false
+        }
+      ]
+    },
+    {
+      "title": "房间管理",
+      "icon": "icon-vip",
+      "href": "",
+      "spread": false,
+      "children": [
+        {
+          "title": "用户管理",
+          "icon": "&#xe61c;",
+          "href": "html/back/user_manage/UserList.html",
+          "spread": false
+        },
+        {
+          "title": "商品信息管理",
+          "icon": "&#xe61c;",
+          "href": "product_manage/list.html",
+          "spread": false
+        },
+        {
+          "title": "商品分类管理",
+          "icon": "&#xe61c;",
+          "href": "classify_manage/product_classify/label_manage.html",
+          "spread": false
+        },
+        {
+          "title": "商品标签管理",
+          "icon": "&#xe61c;",
+          "href": "",
+          "spread": false
+        },
+        {
+          "title": "订单管理",
+          "icon": "&#xe609;",
+          "href": "order_manage/orderList.html",
+          "spread": false
+        }
+      ]
+    }
+  ],
+  "systemeSttings": [
+    {
+      "title": "系统基本参数",
+      "icon": "&#xe631;",
+      "href": "page/systemSetting/basicParameter.html",
+      "spread": false
+    },
+    {
+      "title": "系统日志",
+      "icon": "icon-log",
+      "href": "page/systemSetting/logs.html",
+      "spread": false
+    },
+    {
+      "title": "友情链接",
+      "icon": "&#xe64c;",
+      "href": "page/systemSetting/linkList.html",
+      "spread": false
+    },
+    {
+      "title": "图标管理",
+      "icon": "&#xe857;",
+      "href": "page/systemSetting/icons.html",
+      "spread": false
+    }
+  ],
+  "seraphApi": [
+    {
+      "title": "三级联动模块",
+      "icon": "icon-mokuai",
+      "href": "page/doc/addressDoc.html",
+      "spread": false
+    },
+    {
+      "title": "bodyTab模块",
+      "icon": "icon-mokuai",
+      "href": "page/doc/bodyTabDoc.html",
+      "spread": false
+    },
+    {
+      "title": "三级菜单",
+      "icon": "icon-mokuai",
+      "href": "page/doc/navDoc.html",
+      "spread": false
+    }
+  ]
+}
+
+

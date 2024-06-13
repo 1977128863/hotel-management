@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="http://127.0.0.1:8080/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员添加</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+</head>
+
+<body>
+<div style="padding-right: 30px;padding-top: 30px;">
+    <form class="layui-form" id="addForm">
+        <!--            <div class="layui-form-item">-->
+        <!--                <div class="layui-input-block">-->
+        <!--                    <input type="hidden" name="adminId" >-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red;">*</span>用户名</label>
+            <div class="layui-input-block">
+                <input type="text" name="adminName" lay-reqText="名称不得为空" required lay-verify="required"
+                       placeholder="请输入管理员用户名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: #ff0000;">*</span>姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-reqText="姓名不得为空" required lay-verify="required"
+                       placeholder="请输入管理员姓名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red;">*</span>密码</label>
+            <div class="layui-input-block">
+                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                       lay-reqText="密码不得为空" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red;">*</span>状态</label>
+            <div class="layui-input-block">
+                <input type="radio" name="isLock" value="0" title="未锁定" checked>
+                <input type="radio" name="isLock" value="1" title="已锁定">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red;">*</span>性别</label>
+            <div class="layui-input-block">
+                <select lay-verify="required" name="gender">
+                    <option value=""></option>
+                    <option value="0">女</option>
+                    <option value="1">男</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red;">*</span>手机</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" lay-reqText="手机不得为空" required lay-verify="required|phone"
+                       placeholder="请输入管理员手机" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red;">*</span>职位</label>
+            <div class="layui-input-block">
+                <select lay-verify="required" name="roleId" id="roleId">
+                    <option value=""></option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="add">添加</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script src="static/js/config.js"></script>
+<script src="static/js/jquery.js"></script>
+<script src="static/layui/layui.all.js"></script>
+<script src="html/back/admin_manage/js/addAdmin.js"></script>
+
+
+</html>

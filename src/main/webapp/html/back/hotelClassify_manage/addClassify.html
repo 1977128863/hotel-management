@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="http://127.0.0.1:8080/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员添加</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+</head>
+
+<body>
+<div style="padding-right: 30px;padding-top: 30px;">
+    <form class="layui-form" id="addForm">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: #ff0000;">*</span>房间类型</label>
+            <div class="layui-input-block">
+                <input type="text" name="classifyName" lay-reqText="房间类型不得为空" required lay-verify="required"
+                       placeholder="请输入要新增的房间类型" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red;">*</span>价格</label>
+            <div class="layui-input-block">
+                <input type="text" name="price" lay-reqText="价格不得为空" required lay-verify="required"
+                       placeholder="请输入价格" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: red;">*</span>上级房间类型</label>
+            <div class="layui-input-block">
+                <select name="topClassifyId" id="topClassifyId">
+                    <option value=""></option>
+
+                </select>
+            </div>
+        </div>
+
+
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="add">添加</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </form>
+</div>
+</body>
+<script src="static/js/config.js"></script>
+<script src="static/js/jquery.js"></script>
+<script src="static/layui/layui.all.js"></script>
+<script src="html/back/hotelClassify_manage/js/addClassify.js"></script>
+
+
+</html>

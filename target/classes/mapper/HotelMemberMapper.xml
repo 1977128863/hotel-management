@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyj.dao.HotelMemberMapper">
+    <resultMap id="BaseResultMap" type="com.zyj.dto.HotelMember.HotelMember">
+        <id column="member_id" jdbcType="INTEGER" property="memberId"/>
+        <result column="member_name" jdbcType="VARCHAR" property="memberName"/>
+        <result column="member_level" jdbcType="INTEGER" property="memberLevel"/>
+        <result column="experience" jdbcType="INTEGER" property="experience"/>
+        <result column="discount" jdbcType="VARCHAR" property="discount"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        member_id, member_name, member_level, experience, discount
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from hotel_member
+        where member_id = #{memberId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from hotel_member
+        where member_id = #{memberId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zyj.dto.HotelMember.HotelMember">
+        insert into hotel_member (member_id, member_name, member_level,
+        experience, discount)
+        values (#{memberId,jdbcType=INTEGER}, #{memberName,jdbcType=VARCHAR}, #{memberLevel,jdbcType=INTEGER},
+        #{experience,jdbcType=INTEGER}, #{discount,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zyj.dto.HotelMember.HotelMember">
+        insert into hotel_member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="memberId != null">
+                member_id,
+            </if>
+            <if test="memberName != null">
+                member_name,
+            </if>
+            <if test="memberLevel != null">
+                member_level,
+            </if>
+            <if test="experience != null">
+                experience,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="memberId != null">
+                #{memberId,jdbcType=INTEGER},
+            </if>
+            <if test="memberName != null">
+                #{memberName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberLevel != null">
+                #{memberLevel,jdbcType=INTEGER},
+            </if>
+            <if test="experience != null">
+                #{experience,jdbcType=INTEGER},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zyj.dto.HotelMember.HotelMember">
+        update hotel_member
+        <set>
+            <if test="memberName != null">
+                member_name = #{memberName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberLevel != null">
+                member_level = #{memberLevel,jdbcType=INTEGER},
+            </if>
+            <if test="experience != null">
+                experience = #{experience,jdbcType=INTEGER},
+            </if>
+            <if test="discount != null">
+                discount = #{discount,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where member_id = #{memberId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zyj.dto.HotelMember.HotelMember">
+        update hotel_member
+        set member_name = #{memberName,jdbcType=VARCHAR},
+        member_level = #{memberLevel,jdbcType=INTEGER},
+        experience = #{experience,jdbcType=INTEGER},
+        discount = #{discount,jdbcType=VARCHAR}
+        where member_id = #{memberId,jdbcType=INTEGER}
+    </update>
+
+    <select id="getHotelMember" parameterType="com.zyj.dto.HotelMember.HotelMemberQuery"
+            resultType="com.zyj.dto.HotelMember.HotelMember">
+        select
+        <include refid="Base_Column_List"/>
+        from hotel_member
+        <where>
+            <if test="memberName != null and memberName != ''">
+                and locate (#{memberName,jdbcType=VARCHAR},member_name)
+            </if>
+            <if test="memberLevel != null">
+                and member_level = #{memberLevel,jdbcType=INTEGER}
+            </if>
+        </where>
+        <if test="start != null and limit != null">
+            limit #{start,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+        </if>
+
+    </select>
+
+    <select id="getHotelMemberCount" parameterType="com.zyj.dto.HotelMember.HotelMemberQuery"
+            resultType="java.lang.Integer">
+        select count(*) from hotel_member
+        <where>
+            <if test="memberName != null and memberName != ''">
+                and locate (#{memberName,jdbcType=VARCHAR},member_name)
+            </if>
+            <if test="memberLevel != null">
+                and member_level = #{memberLevel,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <select id="getMemberByName" resultType="java.lang.Integer">
+        select member_id from hotel_member where member_name = #{memberName}
+    </select>
+
+    <select id="getMemberForApply" resultType="java.lang.String">
+        select member_name from hotel_member where member_id = #{memberId}
+    </select>
+</mapper>

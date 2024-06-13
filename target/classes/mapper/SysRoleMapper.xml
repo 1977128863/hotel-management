@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyj.dao.SysRoleMapper">
+    <resultMap id="BaseResultMap" type="com.zyj.dto.Role.SysRole">
+        <id column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="create_per" jdbcType="VARCHAR" property="createPer"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_per" jdbcType="VARCHAR" property="modifyPer"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        role_id, name, level, create_per, create_time, modify_per, modify_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_role
+        where role_id = #{roleId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sys_role
+        where role_id = #{roleId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zyj.dto.Role.SysRole">
+        insert into sys_role (role_id, name, level,
+        create_per, create_time, modify_per,
+        modify_time)
+        values (#{roleId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER},
+        #{createPer,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyPer,jdbcType=VARCHAR},
+        #{modifyTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zyj.dto.Role.SysRole">
+        insert into sys_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                role_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+            <if test="createPer != null">
+                create_per,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyPer != null">
+                modify_per,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="createPer != null">
+                #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null">
+                #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zyj.dto.Role.SysRole">
+        update sys_role
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="createPer != null">
+                create_per = #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null">
+                modify_per = #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where role_id = #{roleId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zyj.dto.Role.SysRole">
+        update sys_role
+        set name = #{name,jdbcType=VARCHAR},
+        level = #{level,jdbcType=INTEGER},
+        create_per = #{createPer,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modify_per = #{modifyPer,jdbcType=VARCHAR},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where role_id = #{roleId,jdbcType=INTEGER}
+    </update>
+
+    <select id="getRole" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_role
+        <where>
+            <if test="sysRoleQuery.name != null and sysRoleQuery.name != ''">
+                and locate(#{sysRoleQuery.name,jdbcType=VARCHAR},`name`)
+            </if>
+            <if test="level != null">
+                and level >= #{level}
+            </if>
+        </where>
+        <if test="sysRoleQuery.limit != null and sysRoleQuery.start != null">
+            limit #{sysRoleQuery.start,jdbcType=INTEGER},#{sysRoleQuery.limit,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="getRoleCount" resultType="java.lang.Integer">
+        select count(*) from sys_role
+        <where>
+<!--            <if test="level != null">-->
+<!--                and level = #{level,jdbcType=INTEGER}-->
+<!--            </if>-->
+            <if test="sysRoleQuery.name != null and sysRoleQuery.name != ''">
+                and locate(#{sysRoleQuery.name,jdbcType=VARCHAR},`name`)
+            </if>
+        </where>
+    </select>
+
+    <select id="getRoleIdByName" resultType="java.lang.Integer">
+        select role_id from sys_role where name = #{name,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getLevelForApply" resultType="com.zyj.dto.Role.SysRole" parameterType="com.zyj.dto.Role.SysRole">
+        select name,role_id from sys_role
+        <where>
+            <if test="roleId != null">
+                and role_id = #{roleId}
+            </if>
+        </where>
+    </select>
+
+    <select id="getRoleByRoleName" resultType="com.zyj.dto.Role.SysRole">
+        select <include refid="Base_Column_List" /> from sys_role where name = #{roleName}
+    </select>
+
+    <delete id="deleteByRoleId" parameterType="java.lang.Integer">
+        delete from sys_role_menu where role_id = #{roleId}
+    </delete>
+
+    <insert id="insertBatchRoleMenu" parameterType="com.zyj.dto.Role.SysRoleDto">
+        insert into sys_role_menu (menu_id,role_id) values
+        <foreach collection="menuIds" item="item" separator=",">
+            (#{item}, #{roleId})
+        </foreach>
+    </insert>
+</mapper>

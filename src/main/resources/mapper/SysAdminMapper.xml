@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyj.dao.SysAdminDao">
+    <resultMap id="BaseResultMap" type="com.zyj.dto.Admin.SysAdmin">
+        <id column="admin_id" jdbcType="INTEGER" property="adminId"/>
+        <result column="admin_name" jdbcType="VARCHAR" property="adminName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="gender" jdbcType="INTEGER" property="gender"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <result column="is_lock" jdbcType="INTEGER" property="isLock"/>
+        <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
+        <result column="lock_count" jdbcType="INTEGER" property="lockCount"/>
+        <result column="create_per" jdbcType="VARCHAR" property="createPer"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_per" jdbcType="VARCHAR" property="modifyPer"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="login_time" jdbcType="TIMESTAMP" property="loginTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        admin_id, admin_name, password, name, gender, phone, role_id, is_lock, is_delete,
+        lock_count, create_per, create_time, modify_per, modify_time, login_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_admin
+        where admin_id = #{adminId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sys_admin
+        where admin_id = #{adminId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zyj.dto.Admin.SysAdmin">
+        insert into sys_admin (admin_id, admin_name, password,
+        name, gender, phone,
+        role_id, is_lock, is_delete,
+        lock_count, create_per, create_time,
+        modify_per, modify_time, login_time
+        )
+        values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR},
+        #{roleId,jdbcType=INTEGER}, #{isLock,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER},
+        #{lockCount,jdbcType=INTEGER}, #{createPer,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+        #{modifyPer,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{loginTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.zyj.dto.Admin.SysAdmin">
+        insert into sys_admin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="adminId != null">
+                admin_id,
+            </if>
+            <if test="adminName != null">
+                admin_name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="roleId != null">
+                role_id,
+            </if>
+            <if test="isLock != null">
+                is_lock,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="lockCount != null">
+                lock_count,
+            </if>
+            <if test="createPer != null">
+                create_per,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyPer != null">
+                modify_per,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="loginTime != null">
+                login_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="adminId != null">
+                #{adminId,jdbcType=INTEGER},
+            </if>
+            <if test="adminName != null">
+                #{adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="isLock != null">
+                #{isLock,jdbcType=INTEGER},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="lockCount != null">
+                #{lockCount,jdbcType=INTEGER},
+            </if>
+            <if test="createPer != null">
+                #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null">
+                #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginTime != null">
+                #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zyj.dto.Admin.SysAdmin">
+        update sys_admin
+        <set>
+            <if test="adminName != null and adminName != ''">
+                admin_name = #{adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null">
+                role_id = #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="isLock != null">
+                is_lock = #{isLock,jdbcType=INTEGER},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="lockCount != null">
+                lock_count = #{lockCount,jdbcType=INTEGER},
+            </if>
+            <if test="createPer != null and createPer != ''">
+                create_per = #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null and modifyPer != ''">
+                modify_per = #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginTime != null">
+                login_time = #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where admin_id = #{adminId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zyj.dto.Admin.SysAdmin">
+        update sys_admin
+        set admin_name = #{adminName,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        gender = #{gender,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=VARCHAR},
+        role_id = #{roleId,jdbcType=INTEGER},
+        is_lock = #{isLock,jdbcType=INTEGER},
+        is_delete = #{isDelete,jdbcType=INTEGER},
+        lock_count = #{lockCount,jdbcType=INTEGER},
+        create_per = #{createPer,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modify_per = #{modifyPer,jdbcType=VARCHAR},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+        login_time = #{loginTime,jdbcType=TIMESTAMP}
+        where admin_id = #{adminId,jdbcType=INTEGER}
+    </update>
+
+    <select id="getAdmin" resultMap="BaseResultMap">
+        select a.admin_id, a.admin_name, a.password, a.name, a.gender, a.phone, a.role_id, a.is_lock, a.is_delete,
+        a.lock_count, a.create_per, a.create_time, a.modify_per, a.modify_time, a.login_time from sys_admin a
+        inner join sys_role b on a.role_id = b.role_id
+        <where>
+            <if test="sysAdminQuery.adminName != null and sysAdminQuery.adminName != ''">
+                and a.admin_name = #{sysAdminQuery.adminName,jdbcType=VARCHAR}
+            </if>
+            <if test="sysAdminQuery.password != null and sysAdminQuery.password != ''">
+                and a.password = #{sysAdminQuery.password}
+            </if>
+            <if test="sysAdminQuery.isDelete != null">
+                and a.is_delete = #{sysAdminQuery.isDelete,jdbcType=INTEGER}
+            </if>
+            <if test="sysAdminQuery.name != null and sysAdminQuery.name != ''">
+                and locate(#{sysAdminQuery.name,jdbcType=VARCHAR},a.name)
+            </if>
+            <if test="sysAdminQuery.gender != null">
+                and a.gender = #{sysAdminQuery.gender,jdbcType=INTEGER},
+            </if>
+            <if test="sysAdminQuery.isLock != null">
+                and a.is_lock = #{sysAdminQuery.isLock,jdbcType=INTEGER},
+            </if>
+            <if test="sysAdminQuery.createPer != null and sysAdminQuery.createPer != ''">
+                and a.create_per = #{sysAdminQuery.createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="sysAdminQuery.createTime != null">
+                and a.create_time = #{sysAdminQuery.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sysAdminQuery.modifyPer != null and sysAdminQuery.modifyPer != ''">
+                and a.modify_per = #{sysAdminQuery.modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="sysAdminQuery.modifyTime != null">
+                and a.modify_time = #{sysAdminQuery.modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sysAdminQuery.loginTime != null">
+                and a.login_time = #{sysAdminQuery.loginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="level != null">
+                and b.level >= #{level,jdbcType=INTEGER}
+            </if>
+
+        </where>
+        ORDER BY a.modify_time DESC
+        <if test="sysAdminQuery.limit != null and sysAdminQuery.start != null">
+            limit #{sysAdminQuery.start,jdbcType=INTEGER},#{sysAdminQuery.limit,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="getAdminCount" resultType="java.lang.Integer">
+        select count(*) from sys_admin a inner join sys_role b on a.role_id = b.role_id
+        <where>
+            <if test="sysAdminQuery.isDelete != null">
+                and a.is_delete = #{sysAdminQuery.isDelete}
+            </if>
+        </where>
+        <if test="sysAdminQuery.adminName != null and sysAdminQuery.adminName != ''">
+            and locate(#{sysAdminQuery.adminName,jdbcType=VARCHAR},a.admin_name)
+        </if>
+        <if test="sysAdminQuery.name != null and sysAdminQuery.name != ''">
+            and locate(#{sysAdminQuery.name,jdbcType=VARCHAR},a.`name`)
+        </if>
+        <if test="level != null">
+            and b.level >= #{level,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <delete id="deleteAdmin" parameterType="com.zyj.dto.Admin.SysAdmin">
+        update sys_admin
+        <set>
+            <if test="adminName != null and adminName != ''">
+                admin_name = #{adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null">
+                role_id = #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="isLock != null">
+                is_lock = #{isLock,jdbcType=INTEGER},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="lockCount != null">
+                lock_count = #{lockCount,jdbcType=INTEGER},
+            </if>
+            <if test="createPer != null and createPer != ''">
+                create_per = #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null and modifyPer != ''">
+                modify_per = #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginTime != null">
+                login_time = #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where admin_id = #{adminId,jdbcType=INTEGER}
+    </delete>
+
+    <select id="getAdminIdByAdminName" resultType="java.lang.Integer">
+        select admin_id from sys_admin where admin_name = #{adminName,jdbcType=VARCHAR}
+    </select>
+</mapper>

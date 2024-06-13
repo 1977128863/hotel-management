@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyj.dao.SysPowerHtmlMapper">
+    <resultMap id="BaseResultMap" type="com.zyj.dto.PowerHtml.SysPowerHtml">
+        <id column="html_id" jdbcType="INTEGER" property="htmlId"/>
+        <result column="html_href" jdbcType="VARCHAR" property="htmlHref"/>
+        <result column="menu_id" jdbcType="INTEGER" property="menuId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        html_id, html_href, menu_id
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_power_html
+        where html_id = #{htmlId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sys_power_html
+        where html_id = #{htmlId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zyj.dto.PowerHtml.SysPowerHtml">
+        insert into sys_power_html (html_id, html_href, menu_id
+        )
+        values (#{htmlId,jdbcType=INTEGER}, #{htmlHref,jdbcType=VARCHAR}, #{menuId,jdbcType=INTEGER}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.zyj.dto.PowerHtml.SysPowerHtml">
+        insert into sys_power_html
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="htmlId != null">
+                html_id,
+            </if>
+            <if test="htmlHref != null">
+                html_href,
+            </if>
+            <if test="menuId != null">
+                menu_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="htmlId != null">
+                #{htmlId,jdbcType=INTEGER},
+            </if>
+            <if test="htmlHref != null">
+                #{htmlHref,jdbcType=VARCHAR},
+            </if>
+            <if test="menuId != null">
+                #{menuId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zyj.dto.PowerHtml.SysPowerHtml">
+        update sys_power_html
+        <set>
+            <if test="htmlHref != null">
+                html_href = #{htmlHref,jdbcType=VARCHAR},
+            </if>
+            <if test="menuId != null">
+                menu_id = #{menuId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where html_id = #{htmlId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zyj.dto.PowerHtml.SysPowerHtml">
+        update sys_power_html
+        set html_href = #{htmlHref,jdbcType=VARCHAR},
+        menu_id = #{menuId,jdbcType=INTEGER}
+        where html_id = #{htmlId,jdbcType=INTEGER}
+    </update>
+    <select id="getPowerHtmlByMenus" resultType="java.lang.String" parameterType="com.zyj.dto.Menu.SysMenu">
+        select html_href from sys_power_html
+        <where>
+            <if test="list != null and list.size() > 0">
+                menu_id in
+                <foreach collection="list" open="(" close=")" separator="," item="item">
+                    #{item.menuId}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertPowerHtml">
+        insert into sys_power_html(html_href) values
+        <if test="list != null">
+            <foreach collection="list" separator="," item="item">
+                (#{item})
+            </foreach>
+        </if>
+    </insert>
+
+    <select id="selectHtml" parameterType="com.zyj.dto.PowerHtml.SysPowerHtmlQuery"
+            resultType="com.zyj.dto.PowerHtml.SysPowerHtml">
+        select a.html_href,b.title from sys_power_html a left join sys_menu b on a.menu_id = b.menu_id
+        <where>
+            <if test="htmlHref != null">
+                and locate (#{htmlHref,jdbcType=VARCHAR},a.html_href)
+            </if>
+        </where>
+        limit #{start,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectHtmlCount" parameterType="com.zyj.dto.PowerHtml.SysPowerHtmlQuery" resultType="java.lang.Integer">
+        select count(*) from sys_power_html
+        <where>
+            <if test="htmlHref != null">
+                and locate (#{htmlHref,jdbcType=VARCHAR},html_href)
+            </if>
+        </where>
+    </select>
+
+    <select id="getAllHtml" resultType="java.lang.String">
+        select html_href from sys_power_html
+    </select>
+
+    <update id="updateHtmlByMenuIdAndHref">
+        update sys_power_html set menu_id = #{menuId} where html_href = #{htmlHref}
+
+    </update>
+</mapper>

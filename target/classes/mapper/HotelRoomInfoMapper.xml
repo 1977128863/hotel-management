@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyj.dao.HotelRoomInfoMapper">
+    <resultMap id="BaseResultMap" type="com.zyj.dto.roomInfo.HotelRoomInfo">
+        <id column="room_id" jdbcType="INTEGER" property="roomId"/>
+        <result column="room_code" jdbcType="VARCHAR" property="roomCode"/>
+        <result column="room_size" jdbcType="DOUBLE" property="roomSize"/>
+        <result column="classify_id" jdbcType="INTEGER" property="classifyId"/>
+        <result column="room_status" jdbcType="INTEGER" property="roomStatus"/>
+        <result column="room_title" jdbcType="VARCHAR" property="roomTitle"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
+        <result column="room_img1" jdbcType="VARCHAR" property="roomImg1"/>
+        <result column="room_img2" jdbcType="VARCHAR" property="roomImg2"/>
+        <result column="room_img3" jdbcType="VARCHAR" property="roomImg3"/>
+        <result column="room_img4" jdbcType="VARCHAR" property="roomImg4"/>
+        <result column="room_img5" jdbcType="VARCHAR" property="roomImg5"/>
+        <result column="integral" jdbcType="INTEGER" property="integral"/>
+        <result column="create_per" jdbcType="VARCHAR" property="createPer"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_per" jdbcType="VARCHAR" property="modifyPer"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        room_id, room_code, room_size, classify_id, room_status, room_title, remark, is_delete,
+        room_img1, room_img2, room_img3, room_img4, room_img5, integral, create_per, create_time,
+        modify_per, modify_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from hotel_room_info
+        where room_id = #{roomId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from hotel_room_info
+        where room_id = #{roomId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zyj.dto.roomInfo.HotelRoomInfo">
+        insert into hotel_room_info (room_id, room_code, room_size,
+        classify_id, room_status, room_title,
+        remark, is_delete, room_img1,
+        room_img2, room_img3, room_img4,
+        room_img5, integral, create_per,
+        create_time, modify_per, modify_time
+        )
+        values (#{roomId,jdbcType=INTEGER}, #{roomCode,jdbcType=VARCHAR}, #{roomSize,jdbcType=DOUBLE},
+        #{classifyId,jdbcType=INTEGER}, #{roomStatus,jdbcType=INTEGER}, #{roomTitle,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, #{roomImg1,jdbcType=VARCHAR},
+        #{roomImg2,jdbcType=VARCHAR}, #{roomImg3,jdbcType=VARCHAR}, #{roomImg4,jdbcType=VARCHAR},
+        #{roomImg5,jdbcType=VARCHAR}, #{integral,jdbcType=INTEGER}, #{createPer,jdbcType=VARCHAR},
+        #{createTime,jdbcType=TIMESTAMP}, #{modifyPer,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.zyj.dto.roomInfo.HotelRoomInfo">
+        insert into hotel_room_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roomId != null">
+                room_id,
+            </if>
+            <if test="roomCode != null">
+                room_code,
+            </if>
+            <if test="roomSize != null">
+                room_size,
+            </if>
+            <if test="classifyId != null">
+                classify_id,
+            </if>
+            <if test="roomStatus != null">
+                room_status,
+            </if>
+            <if test="roomTitle != null">
+                room_title,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="roomImg1 != null">
+                room_img1,
+            </if>
+            <if test="roomImg2 != null">
+                room_img2,
+            </if>
+            <if test="roomImg3 != null">
+                room_img3,
+            </if>
+            <if test="roomImg4 != null">
+                room_img4,
+            </if>
+            <if test="roomImg5 != null">
+                room_img5,
+            </if>
+            <if test="integral != null">
+                integral,
+            </if>
+            <if test="createPer != null">
+                create_per,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyPer != null">
+                modify_per,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roomId != null">
+                #{roomId,jdbcType=INTEGER},
+            </if>
+            <if test="roomCode != null">
+                #{roomCode,jdbcType=VARCHAR},
+            </if>
+            <if test="roomSize != null">
+                #{roomSize,jdbcType=DOUBLE},
+            </if>
+            <if test="classifyId != null">
+                #{classifyId,jdbcType=INTEGER},
+            </if>
+            <if test="roomStatus != null">
+                #{roomStatus,jdbcType=INTEGER},
+            </if>
+            <if test="roomTitle != null">
+                #{roomTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="roomImg1 != null">
+                #{roomImg1,jdbcType=VARCHAR},
+            </if>
+            <if test="roomImg2 != null">
+                #{roomImg2,jdbcType=VARCHAR},
+            </if>
+            <if test="roomImg3 != null">
+                #{roomImg3,jdbcType=VARCHAR},
+            </if>
+            <if test="roomImg4 != null">
+                #{roomImg4,jdbcType=VARCHAR},
+            </if>
+            <if test="roomImg5 != null">
+                #{roomImg5,jdbcType=VARCHAR},
+            </if>
+            <if test="integral != null">
+                #{integral,jdbcType=INTEGER},
+            </if>
+            <if test="createPer != null">
+                #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null">
+                #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zyj.dto.roomInfo.HotelRoomInfo">
+        update hotel_room_info
+        <set>
+            <if test="roomCode != null">
+                room_code = #{roomCode,jdbcType=VARCHAR},
+            </if>
+            <if test="roomSize != null">
+                room_size = #{roomSize,jdbcType=DOUBLE},
+            </if>
+            <if test="classifyId != null">
+                classify_id = #{classifyId,jdbcType=INTEGER},
+            </if>
+            <if test="roomStatus != null">
+                room_status = #{roomStatus,jdbcType=INTEGER},
+            </if>
+            <if test="roomTitle != null">
+                room_title = #{roomTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="roomImg1 != null">
+                room_img1 = #{roomImg1,jdbcType=VARCHAR},
+            </if>
+            <if test="roomImg2 != null">
+                room_img2 = #{roomImg2,jdbcType=VARCHAR},
+            </if>
+            <if test="roomImg3 != null">
+                room_img3 = #{roomImg3,jdbcType=VARCHAR},
+            </if>
+            <if test="roomImg4 != null">
+                room_img4 = #{roomImg4,jdbcType=VARCHAR},
+            </if>
+            <if test="roomImg5 != null">
+                room_img5 = #{roomImg5,jdbcType=VARCHAR},
+            </if>
+            <if test="integral != null">
+                integral = #{integral,jdbcType=INTEGER},
+            </if>
+            <if test="createPer != null">
+                create_per = #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null">
+                modify_per = #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where room_id = #{roomId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zyj.dto.roomInfo.HotelRoomInfo">
+        update hotel_room_info
+        set room_code = #{roomCode,jdbcType=VARCHAR},
+        room_size = #{roomSize,jdbcType=DOUBLE},
+        classify_id = #{classifyId,jdbcType=INTEGER},
+        room_status = #{roomStatus,jdbcType=INTEGER},
+        room_title = #{roomTitle,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=VARCHAR},
+        is_delete = #{isDelete,jdbcType=INTEGER},
+        room_img1 = #{roomImg1,jdbcType=VARCHAR},
+        room_img2 = #{roomImg2,jdbcType=VARCHAR},
+        room_img3 = #{roomImg3,jdbcType=VARCHAR},
+        room_img4 = #{roomImg4,jdbcType=VARCHAR},
+        room_img5 = #{roomImg5,jdbcType=VARCHAR},
+        integral = #{integral,jdbcType=INTEGER},
+        create_per = #{createPer,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modify_per = #{modifyPer,jdbcType=VARCHAR},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where room_id = #{roomId,jdbcType=INTEGER}
+    </update>
+
+
+    <select id="getHotelInfo" parameterType="com.zyj.dto.roomInfo.HotelRoomInfoQuery"
+            resultType="com.zyj.dto.roomInfo.HotelRoomInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from hotel_room_info
+        <where>
+            <if test="roomId != null">
+                and room_id = #{roomId,jdbcType=INTEGER}
+            </if>
+            <if test="roomCode != null and roomCode != ''">
+                and room_code = #{roomCode,jdbcType=VARCHAR}
+            </if>
+            <if test="roomSize != null">
+                and room_size = #{roomSize,jdbcType=DOUBLE}
+            </if>
+            <if test="classifyId != null">
+                and classify_id = #{classifyId,jdbcType=INTEGER}
+            </if>
+            <if test="roomStatus != null">
+                and room_status = #{roomStatus,jdbcType=INTEGER}
+            </if>
+            <if test="roomTitle != null and roomTitle != ''">
+                and room_title = #{roomTitle,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete,jdbcType=INTEGER}
+            </if>
+            <if test="roomImg1 != null and roomImg1 != ''">
+                and room_img1 = #{roomImg1,jdbcType=VARCHAR}
+            </if>
+            <if test="roomImg2 != null and roomImg2 != ''">
+                and room_img2 = #{roomImg2,jdbcType=VARCHAR}
+            </if>
+            <if test="roomImg3 != null and roomImg3 != ''">
+                and room_img3 = #{roomImg3,jdbcType=VARCHAR}
+            </if>
+            <if test="roomImg4 != null and roomImg4 != ''">
+                and room_img4 = #{roomImg4,jdbcType=VARCHAR}
+            </if>
+            <if test="roomImg5 != null and roomImg5 != ''">
+                and room_img5 = #{roomImg5,jdbcType=VARCHAR}
+            </if>
+            <if test="integral != null">
+                and integral = #{integral,jdbcType=INTEGER}
+            </if>
+            <if test="createPer != null and createPer != ''">
+                and create_per = #{createPer,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="modifyPer != null and modifyPer != ''">
+                and modify_per = #{modifyPer,jdbcType=VARCHAR}
+            </if>
+            <if test="modifyTime != null">
+                and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <select id="getHotelInfoCount" parameterType="com.zyj.dto.roomInfo.HotelRoomInfoQuery"
+            resultType="java.lang.Integer">
+        select count(*) from hotel_room_info
+        <where>
+            <if test="roomId != null">
+                and room_id = #{roomId,jdbcType=INTEGER}
+            </if>
+            <if test="roomCode != null and roomCode != ''">
+                and room_code = #{roomCode,jdbcType=VARCHAR}
+            </if>
+            <if test="roomSize != null">
+                and room_size = #{roomSize,jdbcType=DOUBLE}
+            </if>
+            <if test="classifyId != null">
+                and classify_id = #{classifyId,jdbcType=INTEGER}
+            </if>
+            <if test="roomStatus != null">
+                and room_status = #{roomStatus,jdbcType=INTEGER}
+            </if>
+            <if test="roomTitle != null and roomTitle != ''">
+                and room_title = #{roomTitle,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete,jdbcType=INTEGER}
+            </if>
+            <if test="roomImg1 != null and roomImg1 != ''">
+                and room_img1 = #{roomImg1,jdbcType=VARCHAR}
+            </if>
+            <if test="roomImg2 != null and roomImg2 != ''">
+                and room_img2 = #{roomImg2,jdbcType=VARCHAR}
+            </if>
+            <if test="roomImg3 != null and roomImg3 != ''">
+                and room_img3 = #{roomImg3,jdbcType=VARCHAR}
+            </if>
+            <if test="roomImg4 != null and roomImg4 != ''">
+                and room_img4 = #{roomImg4,jdbcType=VARCHAR}
+            </if>
+            <if test="roomImg5 != null and roomImg5 != ''">
+                and room_img5 = #{roomImg5,jdbcType=VARCHAR}
+            </if>
+            <if test="integral != null">
+                and integral = #{integral,jdbcType=INTEGER}
+            </if>
+            <if test="createPer != null and createPer != ''">
+                and create_per = #{createPer,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="modifyPer != null and modifyPer != ''">
+                and modify_per = #{modifyPer,jdbcType=VARCHAR}
+            </if>
+            <if test="modifyTime != null">
+                and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <select id="getRoomInfoIdByRoomCode" resultType="java.lang.Integer" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from hotel_room_info where room_code = #{roomCode}
+    </select>
+</mapper>

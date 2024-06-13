@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="http://127.0.0.1:8080">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理系统</title>
+    <style>
+        body {
+            background-image: url("/static/images/bk.gif");
+            text-align: center
+        }
+
+        .login {
+            width: 380px;
+            height: 200px;
+            border: 1px solid grey;
+            background-image: url("/static/images/黄昏.png");
+            padding: 30px;
+        }
+
+        .main {
+            display: flex;
+            margin-top: 200px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .img {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<link rel="stylesheet" href="/static/layui/css/layui.css">
+<script src="/static/js/jquery.js"></script>
+<body>
+<div class="main">
+    <form class="layui-form login">
+        <div class="layui-form-item " style="padding-top:30px">
+            <i class="layui-icon layui-icon-user img" style="font-size: 30px; color: #252627; "></i>
+            <div class="img">
+                <input type="text" name="adminName" required lay-verify="required" placeholder="请输入用户名"
+                       autocomplete="off" class="layui-input" lay-reqText="用户名不得为空">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <i class="layui-icon layui-icon-password img" style="font-size: 30px; color: rgb(45, 43, 43);"></i>
+            <div class=" img">
+                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                       autocomplete="off"
+                       class="layui-input" lay-reqText="密码不得为空">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="login">登录</button>
+        </div>
+    </form>
+</div>
+</body>
+<script src="/static/js/config.js"></script>
+<script src="/static/layui/layui.all.js"></script>
+<script src="/html/back/login_manage/login.js"></script>
+</html>

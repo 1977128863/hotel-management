@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyj.dao.HotelRoomClassifyMapper">
+    <resultMap id="BaseResultMap" type="com.zyj.dto.roomClassify.HotelRoomClassify">
+        <id column="classify_id" jdbcType="INTEGER" property="classifyId"/>
+        <result column="classify_name" jdbcType="VARCHAR" property="classifyName"/>
+        <result column="top_classify_id" jdbcType="INTEGER" property="topClassifyId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_per" jdbcType="VARCHAR" property="createPer"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="modify_per" jdbcType="VARCHAR" property="modifyPer"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        classify_id, classify_name, top_classify_id, create_time, create_per, modify_time,
+        modify_per, price
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from hotel_room_classify
+        where classify_id = #{classifyId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from hotel_room_classify
+        where classify_id = #{classifyId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zyj.dto.roomClassify.HotelRoomClassify">
+        insert into hotel_room_classify (classify_id, classify_name, top_classify_id,
+        create_time, create_per, modify_time,
+        modify_per, price)
+        values (#{classifyId,jdbcType=INTEGER}, #{classifyName,jdbcType=VARCHAR}, #{topClassifyId,jdbcType=INTEGER},
+        #{createTime,jdbcType=TIMESTAMP}, #{createPer,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP},
+        #{modifyPer,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zyj.dto.roomClassify.HotelRoomClassify">
+        insert into hotel_room_classify
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="classifyId != null">
+                classify_id,
+            </if>
+            <if test="classifyName != null">
+                classify_name,
+            </if>
+            <if test="topClassifyId != null">
+                top_classify_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="createPer != null">
+                create_per,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="modifyPer != null">
+                modify_per,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="classifyId != null">
+                #{classifyId,jdbcType=INTEGER},
+            </if>
+            <if test="classifyName != null">
+                #{classifyName,jdbcType=VARCHAR},
+            </if>
+            <if test="topClassifyId != null">
+                #{topClassifyId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createPer != null">
+                #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null">
+                #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zyj.dto.roomClassify.HotelRoomClassify">
+        update hotel_room_classify
+        <set>
+            <if test="classifyName != null">
+                classify_name = #{classifyName,jdbcType=VARCHAR},
+            </if>
+            <if test="topClassifyId != null">
+                top_classify_id = #{topClassifyId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createPer != null">
+                create_per = #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null">
+                modify_per = #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where classify_id = #{classifyId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zyj.dto.roomClassify.HotelRoomClassify">
+        update hotel_room_classify
+        set classify_name = #{classifyName,jdbcType=VARCHAR},
+        top_classify_id = #{topClassifyId,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_per = #{createPer,jdbcType=VARCHAR},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+        modify_per = #{modifyPer,jdbcType=VARCHAR},
+        price = #{price,jdbcType=DECIMAL}
+        where classify_id = #{classifyId,jdbcType=INTEGER}
+    </update>
+
+    <select id="getRoomClassify" parameterType="com.zyj.dto.roomClassify.HotelRoomClassifyQuery"
+            resultType="com.zyj.dto.roomClassify.HotelRoomClassify">
+        select
+        <include refid="Base_Column_List"/>
+        from hotel_room_classify
+        <where>
+            <if test="classifyName != null and classifyName != ''">
+                and locate (#{classifyName,jdbcType=VARCHAR},classify_name)
+            </if>
+            <if test="topClassifyId != null">
+                and top_classify_id = #{topClassifyId,jdbcType=INTEGER}
+            </if>
+            <if test="price != null">
+                and price = #{price,jdbcType=DECIMAL}
+            </if>
+            <if test="classifyId != null">
+                and classify_id = #{classifyId,jdbcType=DECIMAL}
+            </if>
+        </where>
+        order by modify_time
+        <if test="start != null and limit != null">
+            limit #{start,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+        </if>
+
+    </select>
+
+    <select id="getRoomClassifyCount" parameterType="com.zyj.dto.roomClassify.HotelRoomClassifyQuery"
+            resultType="java.lang.Integer">
+        select count(*) from hotel_room_classify
+        <where>
+            <if test="classifyName != null and classifyName != ''">
+                and locate (#{classifyName,jdbcType=VARCHAR},classify_name)
+            </if>
+            <if test="topClassifyId != null">
+                and top_classify_id = #{topClassifyId,jdbcType=INTEGER}
+            </if>
+            <if test="price != null">
+                and price = #{price,jdbcType=DECIMAL}
+            </if>
+        </where>
+    </select>
+
+    <select id="getClassifyIdByName" resultType="java.lang.Integer">
+        select classify_id from hotel_room_classify where classify_name = #{classifyName}
+    </select>
+
+    <delete id="delClassifyByTopId">
+        delete from hotel_room_classify where top_classify_id = #{topClassifyId}
+    </delete>
+
+    <select id="getAllClassify" resultType="com.zyj.dto.roomClassify.HotelRoomClassify">
+        select classify_name,classify_id from hotel_room_classify
+    </select>
+</mapper>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>酒店</title>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="css/ing.css" rel='stylesheet' type='text/css'/>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/qrious.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <style type="text/css">
+        .login {
+            /* width:300px;
+            height:300px; */
+            border: 1px solid #000;
+            background-color: wheat;
+            position: absolute;
+        }
+
+        .title {
+            height: 30px;
+            line-height: 30px;
+            position: relative;
+            padding-left: 10px;
+            background: #CCC;
+        }
+
+        .close {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            margin-top: 250px;
+            margin-left: 85px;
+            background-color: red;
+            border-radius: 13px;
+            cursor: pointer;
+
+        }
+
+        .close p {
+            font-size: 15px;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            margin-top: -1px;
+        }
+
+        .s_img {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            margin-top: 40px;
+            margin-left: -20px;
+        }
+
+        .but {
+            background-color: red;
+            margin-left: 50px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var aInput = document.getElementsByTagName('input');
+            aInput[7].onclick = function () {
+                var d1 = new Drag();
+                d1.init({
+                    title: '支付'
+                });
+            }
+        }
+
+        function Drag() {
+            this.span = null;
+            this.obj = null;
+
+            this.settings = {//默认参数
+                w: 300,
+                h: 300,
+                dir: 'center'
+
+            };
+        }
+
+        Drag.prototype.init = function (opt) {//初始化
+
+            extend(this.settings, opt)
+
+            this.create();
+            this.setData();
+            this.fnClose();
+        }
+        Drag.prototype.create = function () {//创建元素
+            this.obj = document.createElement('div');
+            this.obj.className = 'login';
+            this.obj.innerHTML = '<div class="title"><span>' + this.settings.title + '</span><a href="#"><span class="close"><p>支付</p></span></a><span class = "s_img"><img src="/images/下载10.jpg" width="250px" height="200px"></span></div>';
+            document.body.appendChild(this.obj);
+        }
+
+        Drag.prototype.setData = function () {//属性
+            this.obj.style.width = this.settings.w + 'px';
+            this.obj.style.height = this.settings.h + 'px';
+
+            this.obj.style.left = (viewWidth() - this.obj.offsetWidth) / 2 + 'px';
+            this.obj.style.top = (viewHeight() - this.obj.offsetHeight) / 2 + 'px';
+        }
+
+        Drag.prototype.fnClose = function () {//关闭按钮
+            var This = this;
+            this.span = this.obj.getElementsByTagName('span')[1];
+            this.span.onclick = function () {
+                document.body.removeChild(This.obj);
+                alert("已支付,下单成功");
+            }
+        }
+
+        function extend(obj1, obj2) {//对象的复制
+            for (var attr in obj2) {
+                obj1[attr] = obj2[attr];
+            }
+        }
+
+        function viewWidth() {
+            return document.documentElement.clientWidth;
+        }
+
+        function viewHeight() {
+            return document.documentElement.clientHeight;
+        }
+
+        function isDelete() {
+            if (window.confirm('请你先支付哦')) {
+                alert("已支付");
+                alert("以预约")
+                return true;
+            } else {
+                false;
+            }
+        }
+
+    </script>
+</head>
+<body>
+<!--header starts-->
+<div class="header">
+    <div class="top-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index">MapleHotel</a>
+                <div class="clearfix"></div>
+            </div>
+            <span class="menu"> </span>
+            <div class="m-clear"></div>
+            <div class="top-menu">
+                <ul>
+                    <li><a href="index">首页</a></li>
+                    <li><a href="restaurant">房间</a></li>
+                    <li class="active"><a href="oneing">预定</a></li>
+                    <li><a href="login">登录</a></li>
+                    <li><a href="zhuce">注册</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+                <script>
+                    $("span.menu").click(function () {
+                        $(".top-menu ul").slideToggle(200);
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+<div class="yu_t">
+    <div class="yu_yy">
+        <div id="loginDiv">
+            <form th:action="@{/yud}">
+                <h1>预定</h1>
+                <p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<input id="userNname" name="cname" type="text" autofocus
+                                                                       required><label id="name_trip"></label></p>
+                <p>身&nbsp;&nbsp;份&nbsp;证:<input id="identity" name="identity_num" type="text" required><label
+                        id="identity_trip"></label></p>
+                <p>电话号码:<input id="phone" name="tel_phone" type="text" required><label id="phone_trip"></label></p>
+                <p>房间类型:<input id="type" name="room_type" type="text" required value="总统套间"><label
+                        id="type_trip"></label></p>
+                <p>开始时间:<input id="static" name="start_time" type="text" placeholder="2022-08-29"><label
+                        id="static_trip"></label></p>
+                <p>结束时间:<input id="end" name="end_time" type="text" placeholder="2022-09-02"><label
+                        id="end_trip"></label></p>
+                <p>留言信息:<input id="message" name="message" type="text" required><label id="message_trip"></label></p>
+                <p><input type="button" class="but" value="支付"><label id="button"></label>
+                <p style="text-align: center;">
+                    <input type="submit" onclick="return isDelete()" class="button" value="预定">
+                    <input type="reset" class="button" value="重置">
+                </p>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!---->
+<div class="fotter">
+    <div class="container">
+        <h3>Maple酒店</h3>
+        <h4>“热情好客，质量好，位置好。我们只为你提供最好的酒店。</h4>
+        <i class="man"></i>
+    </div>
+</div>
+<!---->
+<div class="fotter-info">
+    <div class="container">
+        <div class="col-md-5 details">
+            <div class="hotel-info">
+                <h4>关于这个酒店</h4>
+                <p>
+                    酒店设计以金黄色为主色调，弥漫着浓郁的地中海风情，更有来自世界各地的装饰：法国的青铜、意大利的音乐喷泉、法国的水晶灯、国际一流水准的寝室用品、加上富丽堂皇的回廊，金箔的装饰，由内及外无不彰显皇室气派。</p>
+            </div>
+            <div class="news">
+                <h4>最新消息</h4>
+                <h5>酒店迎国庆</h5>
+                <a href="#">酒店迎国庆,降级大酬宾,欢迎各位来住</a>
+                <h5>酒店迎中秋</h5>
+                <a href="#">酒店迎中秋,降级大酬宾,欢迎各位来住</a>
+                <h5>酒店迎五一</h5>
+                <a href="#">酒店迎五一,降级大酬宾,欢迎各位来住</a>
+                <h5>酒店迎新春</h5>
+                <a href="#">酒店迎新春,降级大酬宾,欢迎各位来住</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-7 details">
+            <div class="join">
+                <h4>加入我们</h4>
+                <p>如果你正值年轻，有一箩筐天马行空的想法无处安放。</p>
+
+                <p>如果你经验丰富，需要一个足够包容的平台大展身手。</p>
+
+                <p>如果你厌倦重复，迫切需要新鲜的气息瞬间唤醒热情。</p>
+
+                <p>如果你热衷挑战，决心要把所有困难毫不留情地打倒。 </p>
+            </div>
+            <div class="member">
+                <h4>疫情防控</h4>
+                <p>新型冠状病毒疫情防控工作遵循”高度戒备、预防第一”的方针，贯彻“统一领导、分工负责、措施得当、反应及时、处置果断”的原则。 </p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <h6>广西城市职业大学 &copy; 毕业设计</h6>
+</div>
+<!---->
+
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyj.dao.SysDataMapper">
+    <resultMap id="BaseResultMap" type="com.zyj.dto.Data.SysData">
+        <id column="data_id" jdbcType="INTEGER" property="dataId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        data_id, name, remark, is_delete
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_data
+        where data_id = #{dataId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sys_data
+        where data_id = #{dataId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zyj.dto.Data.SysData">
+        insert into sys_data (data_id, name, remark,
+        is_delete)
+        values (#{dataId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+        #{isDelete,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zyj.dto.Data.SysData">
+        insert into sys_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dataId != null">
+                data_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dataId != null">
+                #{dataId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zyj.dto.Data.SysData">
+        update sys_data
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=INTEGER},
+            </if>
+        </set>
+        where data_id = #{dataId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zyj.dto.Data.SysData">
+        update sys_data
+        set name = #{name,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=VARCHAR},
+        is_delete = #{isDelete,jdbcType=INTEGER}
+        where data_id = #{dataId,jdbcType=INTEGER}
+    </update>
+
+    <select id="getDataForApply" resultType="java.lang.String">
+        select b.name from sys_data a inner join sys_data_item b on a.data_id = b.data_id where
+        a.name = #{key}
+        <if test="value != null">
+            and b.value = #{value}
+        </if>
+    </select>
+
+    <select id="getData" parameterType="com.zyj.dto.Data.SysDataQuery" resultType="com.zyj.dto.Data.SysData">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_data
+        <where>
+            <if test="name != null and name != ''">
+                and locate(#{name,jdbcType=VARCHAR},name)
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete,jdbcType=INTEGER}
+            </if>
+            <if test="dataId != null">
+                and data_id = #{dataId,jdbcType=INTEGER}
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+
+    <select id="getDataCount" parameterType="com.zyj.dto.Data.SysDataQuery" resultType="java.lang.Integer">
+        select count(*) from sys_data
+        <where>
+            <if test="name != null and name != ''">
+                and locate(#{name,jdbcType=VARCHAR},name)
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete,jdbcType=INTEGER}
+            </if>
+            <if test="dataId != null">
+                and data_id = #{dataId,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,100 @@
+.contact-bg2, .tupian {
+    width: 100%;
+    height: 700px;
+    /* background-color: pink; */
+}
+
+.yuding, .tuc {
+    width: 1350px;
+    height: 500px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 50px;
+    border: 5px solid rgba(244, 244, 244);
+}
+
+.top {
+    width: 1350px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.t_img {
+    width: 650px;
+    height: 400px;
+    margin-top: 30px;
+    margin-left: 20px;
+    float: left;
+}
+
+
+.t_wen {
+    width: 560px;
+    height: 400px;
+    margin-top: 30px;
+    margin-left: 70px;
+    float: left;
+}
+
+.t_cen {
+    width: 560px;
+    height: 250px;
+    background-color: rgba(244, 244, 244);
+    margin-top: 20px;
+}
+
+.t_cen p {
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.yud {
+    width: 180px;
+    height: 50px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background-color: rgba(255, 148, 52);
+    margin-top: 20px;
+}
+
+.yud a {
+    font-size: 25px;
+    margin-left: 40px;
+}
+
+
+.tuc {
+    height: 530px;
+    margin-top: -180px;
+}
+
+
+.qb {
+    width: 1260px;
+    height: 50px;
+    background-color: rgba(244, 244, 244);
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.hx {
+    width: 5px;
+    height: 50px;
+    background-color: rgba(0, 150, 136);
+    float: left;
+}
+
+.qb h4 {
+    margin-left: 22px;
+    line-height: 50px;
+}
+
+.img_t {
+    width: 1260px;
+    height: 400px;
+    background-color: pink;
+    margin-top: 20px;
+    margin-left: 40px;
+}

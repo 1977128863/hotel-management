@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyj.dao.SysMenuMapper">
+    <resultMap id="BaseResultMap" type="com.zyj.dto.Menu.SysMenu">
+        <id column="menu_id" jdbcType="INTEGER" property="menuId"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="orders" jdbcType="INTEGER" property="orders"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
+        <result column="spread" jdbcType="VARCHAR" property="spread"/>
+        <result column="href" jdbcType="VARCHAR" property="href"/>
+        <result column="create_per" jdbcType="VARCHAR" property="createPer"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_per" jdbcType="VARCHAR" property="modifyPer"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="top_menu_id" jdbcType="INTEGER" property="topMenuId"/>
+        <result column="menu_code" jdbcType="VARCHAR" property="menuCode"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        menu_id, title, orders, icon, is_delete, spread, href, create_per, create_time, modify_per,
+        modify_time, top_menu_id, menu_code
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_menu
+        where menu_id = #{menuId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.zyj.dto.Menu.SysMenu">
+        delete from sys_menu
+        <where>
+            <if test="menuId != null">
+                menu_id = #{menuId,jdbcType=INTEGER}
+            </if>
+            <if test="topMenuId != null">
+                top_menu_id = #{topMenuId,jdbcType=INTEGER}
+            </if>
+        </where>
+
+    </delete>
+    <insert id="insert" parameterType="com.zyj.dto.Menu.SysMenu">
+        insert into sys_menu (menu_id, title, orders,
+        icon, is_delete, spread,
+        href, create_per, create_time,
+        modify_per, modify_time, top_menu_id,
+        menu_code)
+        values (#{menuId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{orders,jdbcType=INTEGER},
+        #{icon,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, #{spread,jdbcType=VARCHAR},
+        #{href,jdbcType=VARCHAR}, #{createPer,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+        #{modifyPer,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{topMenuId,jdbcType=INTEGER},
+        #{menuCode,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zyj.dto.Menu.SysMenu" keyProperty="menuId" useGeneratedKeys="true">
+        insert into sys_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="menuId != null">
+                menu_id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="orders != null">
+                orders,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="spread != null">
+                spread,
+            </if>
+            <if test="href != null">
+                href,
+            </if>
+            <if test="createPer != null">
+                create_per,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyPer != null">
+                modify_per,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="topMenuId != null">
+                top_menu_id,
+            </if>
+            <if test="menuCode != null">
+                menu_code,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="menuId != null">
+                #{menuId,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="orders != null">
+                #{orders,jdbcType=INTEGER},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="spread != null">
+                #{spread,jdbcType=VARCHAR},
+            </if>
+            <if test="href != null">
+                #{href,jdbcType=VARCHAR},
+            </if>
+            <if test="createPer != null">
+                #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null">
+                #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="topMenuId != null">
+                #{topMenuId,jdbcType=INTEGER},
+            </if>
+            <if test="menuCode != null">
+                #{menuCode,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zyj.dto.Menu.SysMenu">
+        update sys_menu
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="orders != null">
+                orders = #{orders,jdbcType=INTEGER},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="spread != null">
+                spread = #{spread,jdbcType=VARCHAR},
+            </if>
+            <if test="href != null">
+                href = #{href,jdbcType=VARCHAR},
+            </if>
+            <if test="createPer != null">
+                create_per = #{createPer,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyPer != null">
+                modify_per = #{modifyPer,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="topMenuId != null">
+                top_menu_id = #{topMenuId,jdbcType=INTEGER},
+            </if>
+            <if test="menuCode != null">
+                menu_code = #{menuCode,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where menu_id = #{menuId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zyj.dto.Menu.SysMenu">
+        update sys_menu
+        set title = #{title,jdbcType=VARCHAR},
+        orders = #{orders,jdbcType=INTEGER},
+        icon = #{icon,jdbcType=VARCHAR},
+        is_delete = #{isDelete,jdbcType=INTEGER},
+        spread = #{spread,jdbcType=VARCHAR},
+        href = #{href,jdbcType=VARCHAR},
+        create_per = #{createPer,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modify_per = #{modifyPer,jdbcType=VARCHAR},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+        top_menu_id = #{topMenuId,jdbcType=INTEGER},
+        menu_code = #{menuCode,jdbcType=VARCHAR}
+        where menu_id = #{menuId,jdbcType=INTEGER}
+    </update>
+
+
+    <select id="getSysMenus" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select a.menu_id, a.title, a.orders, a.icon, a.is_delete, a.spread, a.href, a.create_per,
+        a.create_time,a.modify_per, a.modify_time,a.menu_code,a.top_menu_id
+        from sys_menu a inner join
+        sys_role_menu b on a.menu_id = b.menu_id inner join sys_role c on b.role_id = c.role_id
+        where c.role_id = #{roleId}
+        <if test="sysMenu.menuId != null">
+            and a.menu_id = #{sysMenu.menuId,jdbcType=INTEGER}
+        </if>
+        <if test="sysMenu.title != null and sysMenu.title != ''">
+            and a.title = #{sysMenu.title,jdbcType=VARCHAR}
+        </if>
+        <if test="sysMenu.orders != null">
+            and a.orders = #{sysMenu.orders,jdbcType=INTEGER}
+        </if>
+        <if test="sysMenu.icon != null and sysMenu.icon != ''">
+            and a.icon = #{sysMenu.icon,jdbcType=VARCHAR}
+        </if>
+        <if test="sysMenu.isDelete != null">
+            and a.is_delete = #{sysMenu.isDelete,jdbcType=INTEGER}
+        </if>
+        <if test="sysMenu.spread != null">
+            and a.spread = #{sysMenu.spread,jdbcType=VARCHAR}
+        </if>
+        <if test="sysMenu.href != null and sysMenu.href != ''">
+            and a.href = #{sysMenu.href,jdbcType=VARCHAR}
+        </if>
+        <if test="sysMenu.createPer != null and sysMenu.createPer != ''">
+            and a.create_per = #{sysMenu.createPer,jdbcType=VARCHAR}
+        </if>
+        <if test="sysMenu.createTime != null">
+            and a.create_time = #{sysMenu.createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="sysMenu.modifyPer != null and sysMenu.modifyPer != ''">
+            and a.modify_per = #{sysMenu.modifyPer,jdbcType=VARCHAR}
+        </if>
+        <if test="sysMenu.modifyTime != null">
+            and a.modify_time = #{sysMenu.modifyTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="sysMenu.topMenuId != null">
+            and a.top_menu_id = #{sysMenu.topMenuId,jdbcType=INTEGER}
+        </if>
+        <if test="sysMenu.menuCode != null and sysMenu.menuCode != ''">
+            and a.menu_code = #{sysMenu.menuCode,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="getChildrenMenuList" resultMap="BaseResultMap">
+        select a.menu_id, a.title, a.orders, a.icon, a.is_delete, a.spread, a.href, a.create_per,
+        a.create_time,a.modify_per, a.modify_time,a.menu_code,a.top_menu_id from sys_menu a inner join sys_role_menu b
+        inner join sys_role c on a.menu_id = b.menu_id and b.role_id = c.role_id where c.role_id =
+        #{sysRole.roleId,jdbcType=INTEGER}
+        and a.top_menu_id = #{sysMenu.menuId} and level >= #{sysRole.level} order by a.orders
+        <!--    <where>-->
+        <!--      <if test="menuId != null">-->
+        <!--       and menu_id =  #{menuId,jdbcType=INTEGER},-->
+        <!--      </if>-->
+        <!--      <if test="title != null and title != ''">-->
+        <!--        and title = #{title,jdbcType=VARCHAR},-->
+        <!--      </if>-->
+        <!--      <if test="orders != null">-->
+        <!--        and orders = #{orders,jdbcType=INTEGER},-->
+        <!--      </if>-->
+        <!--      <if test="icon != null and icon != ''">-->
+        <!--       and icon =  #{icon,jdbcType=VARCHAR},-->
+        <!--      </if>-->
+        <!--      <if test="isDelete != null">-->
+        <!--        and is_delete = #{isDelete,jdbcType=INTEGER},-->
+        <!--      </if>-->
+        <!--      <if test="spread != null">-->
+        <!--        and spread = #{spread,jdbcType=VARCHAR},-->
+        <!--      </if>-->
+        <!--      <if test="href != null and href != ''">-->
+        <!--        and href = #{href,jdbcType=VARCHAR},-->
+        <!--      </if>-->
+        <!--      <if test="createPer != null and createPer != ''">-->
+        <!--        and create_per = #{createPer,jdbcType=VARCHAR},-->
+        <!--      </if>-->
+        <!--      <if test="createTime != null">-->
+        <!--        and create_time = #{createTime,jdbcType=TIMESTAMP},-->
+        <!--      </if>-->
+        <!--      <if test="modifyPer != null and modifyPer != ''">-->
+        <!--        and modify_per = #{modifyPer,jdbcType=VARCHAR},-->
+        <!--      </if>-->
+        <!--      <if test="modifyTime != null">-->
+        <!--        and modify_time = #{modifyTime,jdbcType=TIMESTAMP},-->
+        <!--      </if>-->
+        <!--      <if test="topMenuId != null">-->
+        <!--        and top_menu_id = #{topMenuId,jdbcType=INTEGER},-->
+        <!--      </if>-->
+        <!--      <if test="menuCode != null and menuCode != ''">-->
+        <!--        and menu_code = #{menuCode,jdbcType=VARCHAR},-->
+        <!--      </if>-->
+        <!--    </where>-->
+    </select>
+
+    <select id="getMenuCount" resultType="com.zyj.dto.Menu.SysMenu" parameterType="com.zyj.dto.Menu.SysMenu">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_menu
+        <where>
+            <if test="menuId != null">
+                and menu_id = #{menuId,jdbcType=INTEGER}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title,jdbcType=VARCHAR}
+            </if>
+            <if test="orders != null">
+                and orders = #{orders,jdbcType=INTEGER}
+            </if>
+            <if test="icon != null and icon != ''">
+                and icon = #{icon,jdbcType=VARCHAR}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete,jdbcType=INTEGER}
+            </if>
+            <if test="spread != null">
+                and spread = #{spread,jdbcType=VARCHAR}
+            </if>
+            <if test="href != null and href != ''">
+                and href = #{href,jdbcType=VARCHAR}
+            </if>
+            <if test="createPer != null and createPer != ''">
+                and create_per = #{createPer,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="modifyPer != null and modifyPer != ''">
+                and modify_per = #{modifyPer,jdbcType=VARCHAR}
+            </if>
+            <if test="modifyTime != null">
+                and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="topMenuId != null">
+                and top_menu_id = #{topMenuId,jdbcType=INTEGER}
+            </if>
+            <if test="menuCode != null and menuCode != ''">
+                and menu_code = #{menuCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <select id="getMenuCountForOrder" resultType="java.lang.Integer" parameterType="com.zyj.dto.Menu.SysMenu">
+        select count(*) from sys_menu
+        <where>
+            <if test="menuId != null">
+                and menu_id = #{menuId,jdbcType=INTEGER}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title,jdbcType=VARCHAR}
+            </if>
+            <if test="orders != null">
+                and orders = #{orders,jdbcType=INTEGER}
+            </if>
+            <if test="icon != null and icon != ''">
+                and icon = #{icon,jdbcType=VARCHAR}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete,jdbcType=INTEGER}
+            </if>
+            <if test="spread != null">
+                and spread = #{spread,jdbcType=VARCHAR}
+            </if>
+            <if test="href != null and href != ''">
+                and href = #{href,jdbcType=VARCHAR}
+            </if>
+            <if test="createPer != null and createPer != ''">
+                and create_per = #{createPer,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="modifyPer != null and modifyPer != ''">
+                and modify_per = #{modifyPer,jdbcType=VARCHAR}
+            </if>
+            <if test="modifyTime != null">
+                and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="topMenuId != null">
+                and top_menu_id = #{topMenuId,jdbcType=INTEGER}
+            </if>
+            <if test="menuCode != null and menuCode != ''">
+                and menu_code = #{menuCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

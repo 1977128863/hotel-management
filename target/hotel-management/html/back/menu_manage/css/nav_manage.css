@@ -1,0 +1,45 @@
+/*
+ * @Author: Lancer
+ * @Date:
+ * @Last Modified by:   Lancer
+ * @Last Modified time: 
+ */
+.ztree li {
+    margin-top: 10px;
+}
+
+.ztree * {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.left #left_nav {
+    overflow-y: scroll;
+    overflow-x: scroll;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+
+ul.base {
+    /*width: 65%;*/
+}
+
+.layui-row .left .left-inner .btn a {
+    padding: 0 20px;
+}
+
+.layui-row .left .left-inner #left_nav {
+    padding: 0 30px;
+}
+
+.layui-row .right {
+    padding: 5px;
+}
+
+.layui-row .right .right-inner {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+/*# sourceMappingURL=nav_manage.css.map */

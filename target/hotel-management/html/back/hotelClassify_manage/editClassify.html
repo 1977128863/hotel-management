@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="http://127.0.0.1:8080">
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>后台左侧管理表--layui后台管理模板 2.0</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/ztree/css/metroStyle/metroStyle.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/html/back/menu_manage/css/nav_manage.css">
+    <style>
+        /*表格内嵌入select需要添加一下*/
+        /*.layui-table-cell {*/
+        /*overflow: visible;*/
+        /*}*/
+
+        /*.layui-table-box {*/
+        /*overflow: visible;*/
+        /*}*/
+
+        /*.layui-table-body {*/
+        /*overflow: visible;*/
+        /*}*/
+
+        #left {
+            float: left;
+            /*display: inline-block;*/
+            width: 50%;
+            height: 40%;
+            word-wrap: break-word;
+            /*//   border-bottom: 3px solid red;*/
+        }
+
+        #right {
+            /*display: inline-block;*/
+            float: right;
+            position: relative;
+            width: 50%;
+            height: 40%;
+            /*border-bottom: 3px solid green;*/
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div class="box">
+    <div>
+        <form class="layui-form" id="editForm" lay-filter="editForm">
+
+
+            <div class="layui-form-item" id="left" style="padding-top: 30px;">
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="hidden" name="classifyId">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: #ff0000;">*</span>房间类型</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="classifyName" lay-reqText="房间类型不得为空" required lay-verify="required"
+                               placeholder="请输入要新增的房间类型" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>价格</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="price" lay-reqText="价格不得为空" required lay-verify="required"
+                               placeholder="请输入价格" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div id="right">
+                <div style="padding: 10px 0 0 10px;">
+                    上级房间类型(一级房间类型可不勾选)：
+                </div>
+                <div class="layui-input-block">
+                    <div class="zTreeDemoBackground left" style="">
+                        <ul id="treeMultiple" class="ztree" name="topClassifyId"></ul>
+                    </div>
+                </div>
+
+                <div class="layui-input-block" style="padding: 35px 0 0 50px">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="save">保存</button>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+
+</div>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/layui/layui.all.js"></script>
+<script src="/static/ztree/js/jquery.ztree.all.js"></script>
+<script src="/static/js/config.js"></script>
+<script src="/html/back/hotelClassify_manage/js/editClassify.js"></script>
+
+
+</body>
+
+</html>

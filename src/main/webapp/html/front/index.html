@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>酒店</title>
+    <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+<!--header starts-->
+<div class="header">
+    <div class="top-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index">MapleHotel</a>
+            </div>
+            <span class="menu"> </span>
+            <div class="m-clear"></div>
+            <div class="top-menu">
+                <ul>
+                    <li class="active"><a href="/html/front/index.html">首页</a></li>
+                    <li><a class="scroll" href="/html/front/restaurant.html">房间</a></li>
+                    <!-- <li><a class="scroll" href="booking">预定</a></li> -->
+                    <li><a href="/html/front/login.html">登录</a></li>
+                    <li><a href="/html/front/zhuce.html">注册</a></li>
+                </ul>
+                <script>
+                    $("span.menu").click(function () {
+                        $(".top-menu ul").slideToggle(200);
+                    });
+                </script>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="banner-info text-center">
+            <h3><label>你好,</label> 欢迎光临</h3>
+            <h1>Maple酒店</h1>
+            <span></span>
+            <ul>
+                <li><a class="scroll" href="#">预定</a><i class="line"></i></li>
+                <li><a class="scroll" href="#">酒店</a><i class="line2"></i></li>
+                <li><a class="scroll" href="#">入住</a></li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+<!---strat-date-piker---->
+<link rel="stylesheet" href="/static/css/jquery-ui.css"/>
+<script src="/static/js/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker,#datepicker1").datepicker();
+    });
+</script>
+<!---/End-date-piker---->
+<!--<link type="text/css" rel="stylesheet" href="/static/css/JFGrid.css" />-->
+<link type="text/css" rel="stylesheet" href="/static/css/JFFormStyle-1.css"/>
+<script type="text/javascript" src="/static/js/JFCore.js"></script>
+<script type="text/javascript" src="/static/js/JFForms.js"></script>
+<!-- Set here the key for your domain in order to hide the watermark on the web server -->
+<script type="text/javascript">
+    (function () {
+        JC.init({
+            domainKey: ''
+        });
+    })();
+</script>
+<div class="online_reservation">
+    <div class="b_room">
+        <div class="booking_room">
+            <div class="reservation">
+                <ul>
+                    <li class="span1_of_1 left">
+                        <h5>开始日期</h5>
+                        <div class="book_date">
+                            <form>
+                                <input class="date" id="datepicker" type="text" value="02/08/2022"
+                                       onfocus="this.value = '';"
+                                       onblur="if (this.value == '') {this.value = '25/08/2022';}">
+                            </form>
+                        </div>
+                    </li>
+                    <li class="span1_of_1 left">
+                        <h5>结束日期</h5>
+                        <div class="book_date">
+                            <form>
+                                <input class="date" id="datepicker1" type="text" value="22/08/2022"
+                                       onfocus="this.value = '';"
+                                       onblur="if (this.value == '') {this.value = '29/08/2022';}">
+                            </form>
+                        </div>
+                    </li>
+                    <li class="span1_of_1">
+                        <h5>房间类型</h5>
+                        <!----------start section_room----------->
+                        <div class="section_room">
+                            <select id="classifyId" class="frm-field required">
+                                <option value="1">单人间</option>
+                                <option value="2">双人间</option>
+                                <option value="3">豪华间</option>
+                                <option value="4">商务间</option>
+                                <option value="6">豪华套间</option>
+                                <option value="7">总统套间</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="span1_of_3">
+                        <div class="date_btn">
+                            <form>
+                                <a href="restaurant.html">查看价格</a>
+                            </form>
+                        </div>
+                    </li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</div>
+
+<!--酒店外景-->
+<div class="package text-center">
+    <div class="container">
+        <h3>酒店外景</h3>
+        <p>一家好的酒店，装修设计需要做到“内外兼修”</p>
+        <!-- requried-jsfiles-for owl -->
+        <link href="/static/css/owl.carousel.css" rel="stylesheet">
+        <script src="/static/js/owl.carousel.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#owl-demo").owlCarousel({
+                    items: 1,
+                    lazyLoad: true,
+                    autoPlay: true,
+                    navigation: true,
+                    navigationText: false,
+                    pagination: false,
+                });
+            });
+        </script>
+        <!-- //requried-jsfiles-for owl -->
+        <div id="owl-demo" class="owl-carousel">
+            <div class="item text-center image-grid">
+                <ul>
+                    <li><img src="/static/images/1.jpg" alt=""></li>
+                    <li><img src="/static/images/2.jpg" alt=""></li>
+                    <li><img src="/static/images/3.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="item text-center image-grid">
+                <ul>
+                    <li><img src="/static/images/3.jpg" alt=""></li>
+                    <li><img src="/static/images/4.jpg" alt=""></li>
+                    <li><img src="/static/images/5.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="item text-center image-grid">
+                <ul>
+                    <li><img src="/static/images/6.jpg" alt=""></li>
+                    <li><img src="/static/images/2.jpg" alt=""></li>
+                    <li><img src="/static/images/8.jpg" alt=""></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!---->
+<!--房间类型-->
+<div class="rooms text-center">
+    <div class="container">
+        <h3>我们的房间类型</h3>
+        <div class="room-grids">
+            <div class="col-md-4 room-sec">
+                <img src="/static/images/下载1.jpg" alt="" width="350px" height="160px"/>
+                <h4>单人间</h4>
+                <p>一间面积为16~20平方米的房间，内有卫生间和其他附属设备组成</p>
+                <div class="items">
+                    <li><a href="#"><span class="img1"> </span></a></li>
+                    <li><a href="#"><span class="img2"> </span></a></li>
+                    <li><a href="#"><span class="img3"> </span></a></li>
+                    <li><a href="#"><span class="img4"> </span></a></li>
+                    <li><a href="#"><span class="img5"> </span></a></li>
+                    <li><a href="#"><span class="img6"> </span></a></li>
+                </div>
+            </div>
+            <div class="col-md-4 room-sec">
+                <img src="/static/images/下载2.jpg" alt="" width="350px" height="160px"/>
+                <h4>双人间</h4>
+                <p>房内有两个床，有中央空调、冰箱、台灯、落地灯、沙发椅等</p>
+                <div class="items">
+                    <li><a href="#"><span class="img1"> </span></a></li>
+                    <li><a href="#"><span class="img2"> </span></a></li>
+                    <li><a href="#"><span class="img3"> </span></a></li>
+                    <li><a href="#"><span class="img4"> </span></a></li>
+                    <li><a href="#"><span class="img5"> </span></a></li>
+                    <li><a href="#"><span class="img6"> </span></a></li>
+                </div>
+            </div>
+            <div class="col-md-4 room-sec">
+                <img src="/static/images/下载3.jpg" alt="" width="350px" height="160px"/>
+                <h4>豪华间</h4>
+                <p>这里的房间好漂亮，几张柔软的沙发拼凑在一起，如此的宽阔，如此的豪华，如此的阔气</p>
+                <div class="items">
+                    <li><a href="#"><span class="img1"> </span></a></li>
+                    <li><a href="#"><span class="img2"> </span></a></li>
+                    <li><a href="#"><span class="img3"> </span></a></li>
+                    <li><a href="#"><span class="img4"> </span></a></li>
+                    <li><a href="#"><span class="img5"> </span></a></li>
+                    <li><a href="#"><span class="img6"> </span></a></li>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-4 room-sec">
+                <img src="/static/images/下载4.jpg" alt="" width="350px" height="160px"/>
+                <h4>商务间</h4>
+                <p>服务好,装修好,房间较大,方便办公</p>
+                <div class="items">
+                    <li><a href="#"><span class="img1"> </span></a></li>
+                    <li><a href="#"><span class="img2"> </span></a></li>
+                    <li><a href="#"><span class="img3"> </span></a></li>
+                    <li><a href="#"><span class="img4"> </span></a></li>
+                    <li><a href="#"><span class="img5"> </span></a></li>
+                    <li><a href="#"><span class="img6"> </span></a></li>
+                </div>
+            </div>
+            <div class="col-md-4 room-sec">
+                <img src="/static/images/下载5.jpg" alt="" width="350px" height="160px"/>
+                <h4>豪华套间</h4>
+                <p>配备独立宽敞位于，更显奢华生活</p>
+                <div class="items">
+                    <li><a href="#"><span class="img1"> </span></a></li>
+                    <li><a href="#"><span class="img2"> </span></a></li>
+                    <li><a href="#"><span class="img3"> </span></a></li>
+                    <li><a href="#"><span class="img4"> </span></a></li>
+                    <li><a href="#"><span class="img5"> </span></a></li>
+                    <li><a href="#"><span class="img6"> </span></a></li>
+                </div>
+            </div>
+            <div class="col-md-4 room-sec">
+                <img src="/static/images/下载6.jpg" alt="" width="350px" height="160px"/>
+                <h4>总统套间</h4>
+                <p>安全舒适、功能齐全，设有中央空调、闭路及卫星电视、国内/国际直拨电话</p>
+                <div class="items">
+                    <li><a href="#"><span class="img1"> </span></a></li>
+                    <li><a href="#"><span class="img2"> </span></a></li>
+                    <li><a href="#"><span class="img3"> </span></a></li>
+                    <li><a href="#"><span class="img4"> </span></a></li>
+                    <li><a href="#"><span class="img5"> </span></a></li>
+                    <li><a href="#"><span class="img6"> </span></a></li>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!---->
+<div class="fotter">
+    <div class="container">
+        <h3>Maple酒店</h3>
+        <h4>“热情好客，质量好，位置好。我们只为你提供最好的酒店。</h4>
+        <i class="man"></i>
+    </div>
+</div>
+<!---->
+<div class="fotter-info">
+    <div class="container">
+        <div class="col-md-5 details">
+            <div class="hotel-info">
+                <h4>关于这个酒店</h4>
+                <p>
+                    酒店设计以金黄色为主色调，弥漫着浓郁的地中海风情，更有来自世界各地的装饰：法国的青铜、意大利的音乐喷泉、法国的水晶灯、国际一流水准的寝室用品、加上富丽堂皇的回廊，金箔的装饰，由内及外无不彰显皇室气派。</p>
+            </div>
+            <div class="news">
+                <h4>最新消息</h4>
+                <h5>酒店迎国庆</h5>
+                <a href="#">酒店迎国庆,降级大酬宾,欢迎各位来住</a>
+                <h5>酒店迎中秋</h5>
+                <a href="#">酒店迎中秋,降级大酬宾,欢迎各位来住</a>
+                <h5>酒店迎五一</h5>
+                <a href="#">酒店迎五一,降级大酬宾,欢迎各位来住</a>
+                <h5>酒店迎新春</h5>
+                <a href="#">酒店迎新春,降级大酬宾,欢迎各位来住</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-7 details">
+            <div class="join">
+                <h4>加入我们</h4>
+                <p>如果你正值年轻，有一箩筐天马行空的想法无处安放。</p>
+
+                <p>如果你经验丰富，需要一个足够包容的平台大展身手。</p>
+
+                <p>如果你厌倦重复，迫切需要新鲜的气息瞬间唤醒热情。</p>
+
+                <p>如果你热衷挑战，决心要把所有困难毫不留情地打倒。 </p>
+            </div>
+            <div class="member">
+                <h4>疫情防控</h4>
+                <p>新型冠状病毒疫情防控工作遵循”高度戒备、预防第一”的方针，贯彻“统一领导、分工负责、措施得当、反应及时、处置果断”的原则。 </p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <h6>钟裕京</h6>
+</div>
+<!---->
+
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
+</body>
+</html>

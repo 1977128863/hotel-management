@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 新增 -->
+    <meta charset="utf-8">
+    <title>新增表--layui后台管理模板 2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/html/back/menu_manage/css/nav_manage_form.css">
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+
+
+</head>
+<body style="min-height: 700px">
+
+<div class="nav_manage_form">
+    <form class="layui-form">
+        <div class="layui-form-item newsTop">
+            <label class="layui-form-label">上级名称：</label>
+            <div class="layui-form-mid layui-word-aux" id="classifyPId" name="classifyPId"
+                 style="margin-left: 10px;color: #333!important;"></div>
+        </div>
+        <div class="layui-form-item nav-name">
+            <label class="layui-form-label">标题:</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="title" required lay-verify="required" placeholder="请输入菜单名称"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item nav-name">
+            <label class="layui-form-label">菜单编号:</label>
+            <div class="layui-input-block">
+                <input type="text" name="menuCode" id="menuCode" class="layui-input" placeholder="请输入菜单编号">
+            </div>
+        </div>
+        <div class="layui-form-item nav-name">
+            <label class="layui-form-label">顺序号:</label>
+            <div class="layui-input-block">
+                <input type="text" name="orders" id="orders" lay-verify="required|orderCheckForEdit" class="layui-input"
+                       placeholder="请输入菜单顺序号">
+            </div>
+        </div>
+        <div class="layui-form-item nav-name">
+            <label class="layui-form-label">图标:</label>
+            <div class="layui-input-block">
+                <input type="text" name="icon" id="icon" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item nav-name">
+            <label class="layui-form-label">URL链接:</label>
+            <div class="layui-input-block">
+                <input type="text" name="href" id="href" class="layui-input">
+            </div>
+        </div>
+
+        <!--保存按钮-->
+        <div class="layui-form-item save" style="text-align: right;margin-right: 20px;padding-top: 20px">
+            <div class="layui-input-block"><!-- onclick="navigationSave()" -->
+                <input type="submit" id="submit" name="submit" lay-submit lay-filter="Save"
+                       class="layui-btn-normal layui-btn layui-btn-lg" value="保存">
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/layui/layui.all.js"></script>
+<script src="/static/js/config.js"></script>
+<script src="/html/back/menu_manage/js/inner_manage_form.js"></script>
+</body>
+</html>

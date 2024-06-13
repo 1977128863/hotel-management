@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyj.dao.HotelOrderMapper">
+    <resultMap id="BaseResultMap" type="com.zyj.dto.Order.HotelOrder">
+        <id column="order_id" jdbcType="INTEGER" property="orderId"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="room_code" jdbcType="VARCHAR" property="roomCode"/>
+        <result column="room_price" jdbcType="DECIMAL" property="roomPrice"/>
+        <result column="room_size" jdbcType="INTEGER" property="roomSize"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="order_status" jdbcType="INTEGER" property="orderStatus"/>
+        <result column="user_phone" jdbcType="VARCHAR" property="userPhone"/>
+        <result column="contacts" jdbcType="VARCHAR" property="contacts"/>
+        <result column="id_card" jdbcType="VARCHAR" property="idCard"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        order_id, user_id, room_code, room_price, room_size, create_time, order_status, user_phone,
+        contacts, id_card
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from hotel_order
+        where order_id = #{orderId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from hotel_order
+        where order_id = #{orderId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zyj.dto.Order.HotelOrder">
+        insert into hotel_order (order_id, user_id, room_code,
+        room_price, room_size, create_time,
+        order_status, user_phone, contacts,
+        id_card)
+        values (#{orderId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roomCode,jdbcType=VARCHAR},
+        #{roomPrice,jdbcType=DECIMAL}, #{roomSize,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+        #{orderStatus,jdbcType=INTEGER}, #{userPhone,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR},
+        #{idCard,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zyj.dto.Order.HotelOrder">
+        insert into hotel_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="roomCode != null">
+                room_code,
+            </if>
+            <if test="roomPrice != null">
+                room_price,
+            </if>
+            <if test="roomSize != null">
+                room_size,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="orderStatus != null">
+                order_status,
+            </if>
+            <if test="userPhone != null">
+                user_phone,
+            </if>
+            <if test="contacts != null">
+                contacts,
+            </if>
+            <if test="idCard != null">
+                id_card,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">
+                #{orderId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="roomCode != null">
+                #{roomCode,jdbcType=VARCHAR},
+            </if>
+            <if test="roomPrice != null">
+                #{roomPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="roomSize != null">
+                #{roomSize,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orderStatus != null">
+                #{orderStatus,jdbcType=INTEGER},
+            </if>
+            <if test="userPhone != null">
+                #{userPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="contacts != null">
+                #{contacts,jdbcType=VARCHAR},
+            </if>
+            <if test="idCard != null">
+                #{idCard,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zyj.dto.Order.HotelOrder">
+        update hotel_order
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="roomCode != null">
+                room_code = #{roomCode,jdbcType=VARCHAR},
+            </if>
+            <if test="roomPrice != null">
+                room_price = #{roomPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="roomSize != null">
+                room_size = #{roomSize,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orderStatus != null">
+                order_status = #{orderStatus,jdbcType=INTEGER},
+            </if>
+            <if test="userPhone != null">
+                user_phone = #{userPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="contacts != null">
+                contacts = #{contacts,jdbcType=VARCHAR},
+            </if>
+            <if test="idCard != null">
+                id_card = #{idCard,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where order_id = #{orderId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zyj.dto.Order.HotelOrder">
+        update hotel_order
+        set user_id = #{userId,jdbcType=INTEGER},
+        room_code = #{roomCode,jdbcType=VARCHAR},
+        room_price = #{roomPrice,jdbcType=DECIMAL},
+        room_size = #{roomSize,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        order_status = #{orderStatus,jdbcType=INTEGER},
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+        contacts = #{contacts,jdbcType=VARCHAR},
+        id_card = #{idCard,jdbcType=VARCHAR}
+        where order_id = #{orderId,jdbcType=INTEGER}
+    </update>
+
+    <select id="getHotelOrder" parameterType="com.zyj.dto.Order.HotelOrderQuery"
+            resultType="com.zyj.dto.Order.HotelOrder">
+        select
+        <include refid="Base_Column_List"/>
+        from hotel_order
+        <where>
+            <if test="roomCode != null and roomCode != ''">
+                and locate (#{roomCode,jdbcType=VARCHAR},room_code)
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId,jdbcType=INTEGER}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=INTEGER}
+            </if>
+            <if test="orderStatus != null">
+                and order_status = #{orderStatus,jdbcType=INTEGER}
+            </if>
+            <if test="userPhone != null and userPhone != ''">
+                and user_phone = #{userPhone,jdbcType=INTEGER}
+            </if>
+            <if test="contacts != null and contacts != ''">
+                and contacts = #{contacts,jdbcType=INTEGER}
+            </if>
+            <if test="idCard != null and idCard != ''">
+                and id_card = #{idCard,jdbcType=INTEGER}
+            </if>
+
+        </where>
+        <if test="start != null and limit != null">
+            limit #{start,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+        </if>
+
+    </select>
+
+    <select id="getHotelOrderCount" parameterType="com.zyj.dto.Order.HotelOrderQuery" resultType="java.lang.Integer">
+        select count(*) from hotel_order
+        <where>
+            <if test="roomCode != null and roomCode != ''">
+                and locate (#{roomCode,jdbcType=VARCHAR},room_code)
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId,jdbcType=INTEGER}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=INTEGER}
+            </if>
+            <if test="orderStatus != null">
+                and order_status = #{orderStatus,jdbcType=INTEGER}
+            </if>
+            <if test="userPhone != null">
+                and user_phone = #{userPhone,jdbcType=INTEGER}
+            </if>
+            <if test="contacts != null">
+                and contacts = #{contacts,jdbcType=INTEGER}
+            </if>
+            <if test="contacts != null">
+                and id_card = #{idCard,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <select id="getRoomStatusByRoomCode" resultType="java.lang.Integer">
+        select b.room_status from hotel_order a inner join
+    </select>
+</mapper>

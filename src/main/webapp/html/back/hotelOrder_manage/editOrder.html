@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="http://127.0.0.1:8080/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员修改</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+</head>
+
+<body>
+<div style="padding-right: 30px;padding-top: 30px;">
+    <form class="layui-form" id="addForm" lay-filter="editForm">
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="hidden" name="memberId">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: #ff0000;">*</span>会员名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="memberName" lay-reqText="会员名称不得为空" required lay-verify="required"
+                       placeholder="请输入会员名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: #ff0000;">*</span>会员等级</label>
+            <div class="layui-input-block">
+                <input type="text" name="memberLevel" lay-reqText="会员等级不得为空" required lay-verify="required"
+                       placeholder="请输入会员等级" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: #ff0000;">*</span>会员基础经验</label>
+            <div class="layui-input-block">
+                <input type="text" name="experience" lay-reqText="会员经验不得为空" required lay-verify="required"
+                       placeholder="请输入会员基础经验" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color: #ff0000;">*</span>优惠(%)</label>
+            <div class="layui-input-block">
+                <input type="text" name="discount" lay-reqText="优惠不得为空" required lay-verify="required"
+                       placeholder="请输入优惠" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="edit">添加</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+
+    </form>
+</div>
+</body>
+<script src="static/js/config.js"></script>
+<script src="static/js/jquery.js"></script>
+<script src="static/layui/layui.all.js"></script>
+<script src="html/back/hotelMember_manage/js/editMember.js"></script>
+
+
+</html>
